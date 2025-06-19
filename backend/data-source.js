@@ -1,4 +1,3 @@
-// backend/data-source.js
 const { DataSource } = require("typeorm");
 require("dotenv").config();
 
@@ -10,6 +9,9 @@ const AppDataSource = new DataSource({
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
   synchronize: true,
+  ssl: {
+    rejectUnauthorized: false, // Allow self-signed certs (Render uses trusted certs)
+  },
   entities: ["./src/entity/*.js"],
 });
 
