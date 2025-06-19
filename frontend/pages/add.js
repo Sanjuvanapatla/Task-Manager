@@ -10,7 +10,6 @@ export default function Add() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("BASE_URL:", BASE_URL);
     await axios.post(`${BASE_URL}/tasks`, form);
     router.push('/');
   };
@@ -19,8 +18,19 @@ export default function Add() {
     <div className="p-6">
       <h1 className="text-xl font-bold mb-4">Add New Task</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input type="text" placeholder="Title" required value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className="w-full p-2 border" />
-        <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} className="w-full p-2 border">
+        <input
+          type="text"
+          placeholder="Title"
+          required
+          value={form.title}
+          onChange={(e) => setForm({ ...form, title: e.target.value })}
+          className="w-full p-2 border"
+        />
+        <select
+          value={form.status}
+          onChange={(e) => setForm({ ...form, status: e.target.value })}
+          className="w-full p-2 border"
+        >
           <option value="todo">To Do</option>
           <option value="in_progress">In Progress</option>
           <option value="done">Done</option>

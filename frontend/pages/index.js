@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-console.log(process.env.NEXT_PUBLIC_API_URL);
 
 export default function Home() {
   const [tasks, setTasks] = useState([]);
