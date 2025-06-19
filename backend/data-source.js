@@ -9,8 +9,11 @@ const AppDataSource = new DataSource({
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
   synchronize: true,
-  ssl: {
-    rejectUnauthorized: false, // Allow self-signed certs (Render uses trusted certs)
+  ssl: true, // ✅ Needed for Render-hosted PostgreSQL
+  extra: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
   },
   entities: ["./src/entity/*.js"],
 });

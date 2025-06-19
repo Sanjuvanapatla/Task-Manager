@@ -10,6 +10,7 @@ export default function Add() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("BASE_URL:", BASE_URL);
     await axios.post(`${BASE_URL}/tasks`, form);
     router.push('/');
   };
