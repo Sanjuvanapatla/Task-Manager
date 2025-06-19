@@ -2,16 +2,18 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function Home() {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
-    const res = await axios.get('http://localhost:5000/tasks');
+    const res = await axios.get(`${BASE_URL}/tasks`);
     setTasks(res.data);
   };
 
   const deleteTask = async (id) => {
-    await axios.delete(`http://localhost:5000/tasks/${id}`);
+    await axios.delete(`${BASE_URL}/tasks/${id}`);
     fetchTasks();
   };
 
